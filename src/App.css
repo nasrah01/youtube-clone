@@ -1,0 +1,161 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.youtube__icon {
+  width: 80px;
+  cursor: pointer;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+}
+
+.header__search, .header__icons, .header__navigation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.header__search {
+  padding: 5px;
+}
+
+.header__search input {
+  width: 38vw;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 2px 0 0 2px;
+  box-shadow: inset 0 1px 2px #f2f2f2;
+  font-size: 16px;
+  padding: 1rem;
+}
+
+.header__search input:focus{
+  outline: none;
+}
+
+.header__search--icon {
+  border: 1px solid #ccc;
+  padding: 4px 22px 3px 22px;
+  color: rgba(0, 0, 0, 0.64);
+  background-color: #f8f8f8;
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
+}
+
+.header__menu {
+  margin-right: 25px;
+  margin-left: .5rem;
+  padding: 3px;
+  color: rgba(0, 0, 0, 0.60) !important;
+  cursor: pointer;
+}
+
+.header__icons-icon {
+  padding-right: 2rem;
+  color: rgba(0, 0, 0, 0.60) !important;
+  cursor: pointer;
+}
+
+.header__avatar {
+  margin-right: 1.4rem;
+  width: 35px !important;
+  height: 35px !important;
+  cursor: pointer;
+
+}
+
+/* MAIN CONTENT */
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* SIDEBAR */
+.sidebar {
+  flex: .15;
+  padding-top: 1rem;
+}
+
+.sidebar__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: .5rem 0 .5rem 2.5rem;
+  cursor: pointer;
+}
+
+.sidebar__item:hover {
+  background-color: #f2f2f2;
+}
+
+.sidebar__icon {
+  font-size: 28px !important;
+  margin-right: 2.5rem;
+  padding: 3px;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.sidebar__border {
+  background-color: #ccc;
+  width: 100%;
+  height: .05rem;
+  margin: 12px 0;
+}
+
+.sidebar__title {
+  color: #030303;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.sidebar__subhead {
+  text-transform: uppercase;
+  color: rgba(96, 96, 96, .7);
+  margin-bottom: 1.2rem;
+  padding-left: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.sidebar__item.selected {
+  background-color: #ccc;
+}
+
+.sidebar__item.selected > .sidebar__title {
+  font-weight: 500;
+}
+
+.sidebar__item.selected > .sidebar__icon {
+  color: red;
+}
+
+/* VIDEO CONTAINER */
+.videos {
+  flex: .85;
+}
