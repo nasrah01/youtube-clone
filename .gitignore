@@ -1,11 +1,8 @@
-
 .eslintcache
 
 # dependencies
 /node_modules
 
-
-
 # production
 config.js
-package-lock.json
+
