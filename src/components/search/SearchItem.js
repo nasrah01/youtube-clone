@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
   
 const SearchItem = ({ video}) => {
 
@@ -63,25 +64,27 @@ const SearchItem = ({ video}) => {
 
 
     return (
-        <div className="video__item"> 
-            <div className="video__container">
-                <img src={video.snippet.thumbnails.medium.url} alt= {video.snippet.title}  className="video__thumbnail"/>
+        <Link key={video.id.videoId} to={`/PlayVideo/${video.id.videoId}`} >
+            <div className="video__item"> 
+                <div className="video__container">
+                    <img src={video.snippet.thumbnails.medium.url} alt= {video.snippet.title}  className="video__thumbnail"/>
+                </div>
+                <div className="video__info">
+                    <h2>
+                        {video.snippet.title.substring(0, 60)}
+                    </h2> 
+                    <p className="video__publish">
+                    {createTimeStamp(time, publishTime)}
+                    </p>
+                    <p className="video__channel">
+                        {video.snippet.channelTitle}
+                    </p>
+                    <p className="video__description">
+                        {video.snippet.description}
+                    </p>
+                </div>
             </div>
-            <div className="video__info">
-                <h2>
-                    {video.snippet.title.substring(0, 60)}
-                </h2> 
-                <p className="video__publish">
-                {createTimeStamp(time, publishTime)}
-                </p>
-                <p className="video__channel">
-                    {video.snippet.channelTitle}
-                </p>
-                <p className="video__description">
-                    {video.snippet.description}
-                </p>
-            </div>
-        </div>
+        </Link>
     )
 };
 
