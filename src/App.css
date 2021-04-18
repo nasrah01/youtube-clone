@@ -24,11 +24,6 @@ a {
   color: #606060;
 }
 
-.youtube__icon {
-  width: 80px;
-  cursor: pointer;
-}
-
 /* HEADER */
 .header {
   display: flex;
@@ -76,10 +71,15 @@ a {
 }
 
 .header__menu {
+  color: rgba(0, 0, 0, 0.60) !important;
+  cursor: pointer;
   margin-right: 25px;
   margin-left: .5rem;
   padding: 3px;
-  color: rgba(0, 0, 0, 0.60) !important;
+}
+
+.youtube__icon {
+  width: 80px;
   cursor: pointer;
 }
 
@@ -105,13 +105,13 @@ a {
 }
 
 /* SIDEBAR */
-.sidebar {
+.sidebar.active {
   flex: .15;
   padding-top: 1rem;
 }
 
-.main__video .sidebar {
- display: none;
+.sidebar.hidden {
+  display: none;
 }
 
 .sidebar__item {
@@ -170,8 +170,15 @@ a {
 
 /* VIDEO CONTAINER */
 .videos {
-  flex: .85;
   background-color: #f9f9f9;
+}
+
+.videos.active {
+  flex: .85;
+}
+
+.videos.active {
+  flex: 1;
 }
 
 .videos__border {
@@ -276,6 +283,27 @@ a {
 }
 
 /* VIDEO PLAYER */
+.sidebar__container .header__navigation {
+  padding: 1.8rem 0 0 2rem;
+}
+
+.sidebar__container.active {
+  display: block;
+}
+
+.sidebar__container.hidden {
+  display: none;
+}
+
+.sidebar__container {
+  width: 230px;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
 
 .video__player {
   display: grid;
@@ -283,6 +311,7 @@ a {
   grid-template-columns: repeat(2, 1fr);
   padding: 0 10rem;
   grid-column-gap: 2rem;
+  position: relative;
 }
 
 .player__container {

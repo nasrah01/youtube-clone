@@ -86,7 +86,7 @@ const VideoItem = ({ video }) => {
                         {video.snippet.channelTitle}
                     </p>
                     <p className="video__publish">
-                    {viewCount(video.statistics.viewCount)} views <span>•</span> {createTimeStamp(time, publishTime)}
+                    {video.statistics.viewCount} views <span>•</span> {createTimeStamp(time, publishTime)}
                     </p>
                 </div>
             </div>

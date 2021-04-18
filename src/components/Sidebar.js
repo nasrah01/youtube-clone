@@ -13,16 +13,15 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import FlagIcon from '@material-ui/icons/Flag';
 import HelpIcon from '@material-ui/icons/Help';
 import FeedbackIcon from '@material-ui/icons/Feedback';
-
 import SidebarList from './SidebarList';
 
 
 
-const Sidebar = () =>  {
+const Sidebar = ({open}) =>  {
 
     
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${open ? "active" : "hidden"}`} >
             <SidebarList selected Icon={HomeIcon} title="Home" />
             <SidebarList Icon={WhatshotIcon} title="Trending" />
             <SidebarList Icon={SubscriptionsIcon} title="Subscriptions" />

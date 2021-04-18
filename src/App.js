@@ -8,6 +8,8 @@ import SearchVideos from './components/search/SearchVideos';
 import youtube from './config';
 import {BrowserRouter,Route} from "react-router-dom";
 import VideoPlayer from './components/VideoPlayer';
+import MenuSharpIcon from '@material-ui/icons/MenuSharp';
+import {Link} from 'react-router-dom';
 
 
 const api = axios.create({
@@ -24,6 +26,9 @@ const api = axios.create({
 const App = () => {
 
   const [videos, setVideos] = useState([]);
+  const [open, setOpen] = useState(true);
+
+  const clickMenu = () => setOpen(!open);
 
   const onSearchSubmit = async inputSearch => {
     const response = await api.get('/search', {
@@ -40,29 +45,38 @@ const App = () => {
         <div className="app">
         <BrowserRouter>
             <Route path='/' exact >
-              <Header onFormSubmit={onSearchSubmit}/>
+              <Header onFormSubmit={onSearchSubmit} open={open} setOpen={setOpen}/>
               <div className="main">
-              <Sidebar />
-              <div className="suggest__videos videos">
+              <Sidebar open={open} />
+              <div className={`suggest__videos videos ${open ? "active" : "hidden"}`}>
                 <h3 className="suggested__header">Recommended</h3>
                 <SuggestedVideos />
               </div> 
               </div>
             </Route>
               <Route path='/components/search/SearchVideos' exact>
-              <Header onFormSubmit={onSearchSubmit}/>
+              <Header onFormSubmit={onSearchSubmit} open={open} setOpen={setOpen}/>
               <div className="main">
-                <Sidebar />
+                <Sidebar open={open} />
                 <SearchVideos videos= {videos}/>
               </div>
             </Route>
             <Route path='/PlayVideo/:videoId' exact>
               <div className='videoplayer'>
-              <Header onFormSubmit={onSearchSubmit}/>
-              <div className="main main__video">
-                <Sidebar />
-                <VideoPlayer />
-              </div>
+                <Header onFormSubmit={onSearchSubmit} open={open} setOpen={setOpen}/>
+                <div className="main__video">
+                  <div className={`sidebar__container ${open ? "active" : "hidden"}`}>
+                    <div className="header__navigation">
+                      <MenuSharpIcon className="header__menu" style={{ fontSize: 28 }} onClick={clickMenu} />
+                      <Link to='/'>
+                          <img src="/yt-icon.png" alt="youtube icon" className="youtube__icon"/>
+                      </Link>
+                    </div>
+                    <div className="sidebar__border"></div>
+                    <Sidebar open={open} />
+                  </div>
+                  <VideoPlayer />
+                </div>
               </div>
             </Route>
         </BrowserRouter>

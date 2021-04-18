@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 
 import { Avatar } from '@material-ui/core';
 
-const Header = ({onFormSubmit}) =>  {
+const Header = ({onFormSubmit, open, setOpen}) =>  {
 
     const [inputSearch, setInputSearch] = useState('');
 
@@ -21,10 +21,12 @@ const Header = ({onFormSubmit}) =>  {
         onFormSubmit(inputSearch);
     }
 
+    const onClick = () => setOpen(!open);
+
         return (
             <div className="header">
                 <div className="header__navigation">
-                    <MenuSharpIcon className="header__menu" style={{ fontSize: 28 }} />
+                    <MenuSharpIcon className="header__menu" style={{ fontSize: 28 }} onClick={onClick}/>
                     <Link to='/'>
                         <img src="/yt-icon.png" alt="youtube icon" className="youtube__icon"/>
                     </Link>
