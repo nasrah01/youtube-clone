@@ -19,9 +19,18 @@ const Header = ({onFormSubmit, open, setOpen}) =>  {
     const onSubmit = (e) => {
         e.preventDefault();
         onFormSubmit(inputSearch);
+        window.history.pushState({}, '', '/components/search/SearchVideos');
+        const navEvent = new PopStateEvent('popstate');
+
+        setTimeout(() => {
+            window.dispatchEvent(navEvent);
+        }, 500);
+        
     }
 
-    const onClick = () => setOpen(!open);
+    const onClick = () => {
+        setOpen(!open);
+    };
 
         return (
             <div className="header">
@@ -33,11 +42,9 @@ const Header = ({onFormSubmit, open, setOpen}) =>  {
                 </div>
                 <form className="header__search" onSubmit={onSubmit}>
                     <input type="text" placeholder="Search" value={inputSearch} onChange={updateInput}/>
-                    <Link to='/components/search/SearchVideos'>
                         <div className="header__search--icon">
                             <SearchSharpIcon style={{ fontSize: 20 }} />
                         </div>
-                   </Link> 
                 </form> 
                 <div className="header__icons">
                     <VideoCallSharpIcon className="header__icons-icon" style={{ fontSize: 45 }} />

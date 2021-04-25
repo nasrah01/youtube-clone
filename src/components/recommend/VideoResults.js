@@ -7,7 +7,7 @@ const VideoItem = ({ video }) => {
     const publishTime = new Date(video.snippet.publishedAt).getTime();
     const time = new Date().getTime();
     
-    // refactor function
+    // refactor function if video views are not available do not show
     function createTimeStamp(time, upload) {
 
         const timeChange = time - upload;
@@ -64,7 +64,11 @@ const VideoItem = ({ video }) => {
     } 
 
     const viewCount = (num) => {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        if(num == null) {
+            return '';
+        } else {
+            return  `${num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} views • `;
+        }
     };
 
 
@@ -86,7 +90,7 @@ const VideoItem = ({ video }) => {
                         {video.snippet.channelTitle}
                     </p>
                     <p className="video__publish">
-                    {video.statistics.viewCount} views <span>•</span> {createTimeStamp(time, publishTime)}
+                    {` ${viewCount(video.statistics.viewCount)}`} {createTimeStamp(time, publishTime)}
                     </p>
                 </div>
             </div>

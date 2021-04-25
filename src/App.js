@@ -28,7 +28,9 @@ const App = () => {
   const [videos, setVideos] = useState([]);
   const [open, setOpen] = useState(true);
 
-  const clickMenu = () => setOpen(!open);
+  const clickMenu = () => {
+    setOpen(!open)
+  };
 
   const onSearchSubmit = async inputSearch => {
     const response = await api.get('/search', {
@@ -75,7 +77,7 @@ const App = () => {
                     <div className="sidebar__border"></div>
                     <Sidebar open={open} />
                   </div>
-                  <VideoPlayer />
+                  <VideoPlayer setOpen={setOpen}/>
                 </div>
               </div>
             </Route>
